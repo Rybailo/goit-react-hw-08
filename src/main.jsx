@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate persistor={persistor} loading={null}>
-        <BrowserRouter basename="/goit-react-hw-08">
+        <BrowserRouter>
           <Suspense fallback={<div>Loading...</div>}>
             <App />
           </Suspense>
