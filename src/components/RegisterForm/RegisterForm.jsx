@@ -8,10 +8,9 @@ import {
   StyledForm,
 } from "../ContactForm/ContactForm.styled";
 import { useDispatch, useSelector } from "react-redux";
-import { getContacts } from "../../redux/selectors";
 
 import { toast } from "react-hot-toast";
-import { addContact } from "../../services/api";
+import { getContacts } from "../../redux/contacts/selectors";
 
 const UserRegisterSchema = Yup.object().shape({
   name: Yup.string()

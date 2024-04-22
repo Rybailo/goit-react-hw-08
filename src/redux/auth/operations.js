@@ -37,7 +37,7 @@ export const apiRefreshUser = createAsyncThunk(
 
     setToken(token);
     try {
-      const data = await requestGetCurrentUser(formData);
+      const data = await requestGetCurrentUser();
       console.log("data", data);
       return data;
     } catch (error) {

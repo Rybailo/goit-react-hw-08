@@ -2,11 +2,13 @@ import { Contact } from "../Contact/Contact";
 import { ColorRing } from "react-loader-spinner";
 import { List } from "./ContactList.styled";
 import { useSelector } from "react-redux";
-import { selectIsLoading, selectVisibleContacts } from "../../redux/selectors";
+
 import { useEffect } from "react";
 
 import { useDispatch } from "react-redux";
-import { fetchContacts } from "../../services/api";
+import { fetchContacts } from "../../redux/contacts/operations";
+import { selectIsLoading } from "../../redux/contacts/selectors";
+import { selectVisibleContacts } from "../../redux/selectors";
 
 export const ContactList = () => {
   const filteredProfiles = useSelector(selectVisibleContacts);
