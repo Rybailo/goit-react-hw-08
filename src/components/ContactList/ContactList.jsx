@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchContacts } from "../../redux/contacts/operations";
 import { selectIsLoading } from "../../redux/contacts/selectors";
-import { selectVisibleContacts } from "../../redux/selectors";
+import { selectVisibleContacts } from "../../redux/filters/selectors";
 
 export const ContactList = () => {
   const filteredProfiles = useSelector(selectVisibleContacts);

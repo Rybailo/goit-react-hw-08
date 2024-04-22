@@ -23,7 +23,6 @@ export const addContact = createAsyncThunk(
         "https://65f84921df151452460f04ff.mockapi.io/contacts/contacts/",
         contact
       );
-      console.log("contact", contact);
       return contacts.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

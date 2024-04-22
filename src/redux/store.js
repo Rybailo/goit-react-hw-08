@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { filterReducer } from "./filtersSlice";
+import { filterReducer } from "./filters/slice";
 import storage from "redux-persist/lib/storage";
 
 import { authReducer } from "./auth/slice";
