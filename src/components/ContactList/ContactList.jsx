@@ -1,9 +1,7 @@
 import { ColorRing } from "react-loader-spinner";
 import { List } from "./ContactList.styled";
 import { useSelector } from "react-redux";
-
 import { useEffect } from "react";
-
 import { useDispatch } from "react-redux";
 import {
   apiDeleteContact,
@@ -19,7 +17,7 @@ import Contact from "../Contact/Contact";
 import { ErrorMessage } from "formik";
 
 const ContactList = () => {
-  /* const filteredProfiles = useSelector(selectVisibleContacts); */
+  const filteredProfiles = useSelector(selectVisibleContacts);
   const isLoading = useSelector(selectIsLoading);
   const contacts = useSelector(selectGetContacts);
   const isError = useSelector(selectGetError);
@@ -52,8 +50,8 @@ const ContactList = () => {
       )}
       {isError && <ErrorMessage />}
       <ul>
-        {contacts !== null &&
-          contacts.map((contact) => {
+        {filteredProfiles !== null &&
+          filteredProfiles.map((contact) => {
             return (
               <li key={contact.id}>
                 <h3>Name: {contact.name}</h3>

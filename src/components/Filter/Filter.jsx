@@ -7,6 +7,9 @@ import { getFilter } from "../../redux/filters/selectors";
 const Filter = () => {
   const filter = useSelector(getFilter);
   const dispatch = useDispatch();
+  const handleImputFilterValue = (ev) => {
+    dispatch(setFilter(ev.target.value));
+  };
 
   return (
     <div>
@@ -16,7 +19,7 @@ const Filter = () => {
           name="filter"
           type="text"
           value={filter}
-          onChange={(evt) => dispatch(setFilter(evt.target.value))}
+          onChange={handleImputFilterValue}
           placeholder="Search contact"
         />
       </label>
