@@ -15,6 +15,7 @@ import {
 import { selectVisibleContacts } from "../../redux/filters/selectors";
 import Contact from "../Contact/Contact";
 import { ErrorMessage } from "formik";
+import { toast } from "react-hot-toast";
 
 const ContactList = () => {
   const filteredProfiles = useSelector(selectVisibleContacts);
@@ -33,6 +34,10 @@ const ContactList = () => {
 
   const onDeleteContact = (contactId) => {
     dispatch(apiDeleteContact(contactId));
+    if (onDeleteContact) {
+      toast.success("Successfully deleted!");
+      return;
+    }
   };
 
   return (

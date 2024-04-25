@@ -52,7 +52,7 @@ const ContactForm = ({ onAddContact }) => {
       actions.resetForm();
       return;
     }
-
+    toast.success(`${name} successfully added `);
     dispatch(apiAddContact({ name, number }));
   };
   return (
