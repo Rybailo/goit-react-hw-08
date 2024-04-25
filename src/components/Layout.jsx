@@ -1,10 +1,11 @@
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { selectUserData, selectUserIsSignedIn } from "../redux/auth/selectors";
+import { selectUserIsSignedIn } from "../redux/auth/selectors";
+import UserMenu from "./UserMenu/UserMenu";
 
-export const Layout = ({ children }) => {
+const Layout = ({ children }) => {
   const isSignedIn = useSelector(selectUserIsSignedIn);
-  const userData = useSelector(selectUserData);
+
   return (
     <div>
       <header>
@@ -12,8 +13,7 @@ export const Layout = ({ children }) => {
           <>
             <NavLink to="/home">Home</NavLink>
             <NavLink to="/contacts">Contacts</NavLink>
-            <span>Hello {userData.name}!</span>
-            <button type="button">Logout</button>
+            <UserMenu />
           </>
         ) : (
           <>
@@ -26,3 +26,5 @@ export const Layout = ({ children }) => {
     </div>
   );
 };
+
+export default Layout;

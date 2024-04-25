@@ -28,11 +28,25 @@ export const requestSignIn = async (formData) => {
 
 export const requestGetCurrentUser = async () => {
   const { data } = await instance.get("/users/current");
-  setToken(data.token);
   return data;
 };
 
 export const requestLogOut = async () => {
   const { data } = await instance.post("/users/logout");
+  return data;
+};
+
+export const requestGetContact = async () => {
+  const { data } = await instance.get("/contacts");
+  return data;
+};
+
+export const requestAddContact = async (formData) => {
+  const { data } = await instance.post("/contacts", formData);
+  return data;
+};
+
+export const requestDeleteContact = async (contactId) => {
+  const { data } = await instance.delete(`/contacts/${contactId}`);
   return data;
 };

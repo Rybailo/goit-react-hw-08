@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { RegisterForm } from "../../components/RegisterForm/RegisterForm";
+import RegisterForm from "../../components/RegisterForm/RegisterForm";
 import { apiRegisterUser } from "../../redux/auth/operations";
 
 const registration = () => {
@@ -11,6 +11,7 @@ const registration = () => {
   };
   return (
     <div>
+      Register
       <RegisterForm onRegisterUser={onRegisterUser} />
     </div>
   );

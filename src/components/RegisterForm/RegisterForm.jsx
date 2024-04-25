@@ -10,7 +10,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 
 import { toast } from "react-hot-toast";
-import { getContacts } from "../../redux/contacts/selectors";
+import { selectGetContacts } from "../../redux/contacts/selectors";
 
 const UserRegisterSchema = Yup.object().shape({
   name: Yup.string()
@@ -25,25 +25,9 @@ const UserRegisterSchema = Yup.object().shape({
     .min(8, "Password must be at least 8 characters!"),
 });
 
-export const RegisterForm = ({ onRegisterUser }) => {
-  const contacts = useSelector(getContacts);
+const RegisterForm = ({ onRegisterUser }) => {
+  const contacts = useSelector(selectGetContacts);
   const dispatch = useDispatch();
-
-  /* const handleSubmit = (values, actions) => {
-    actions.resetForm();
-    const { name, email, password } = values;
-    const isExist = values.some(
-      (value) => value.email.toLowerCase() === email.toLowerCase()
-    );
-    onRegister(values);
-
-    if (isExist) {
-      toast.error(`${email} is already in registered.`);
-      actions.resetForm();
-      return;
-    }
-
-    dispatch(addContact({ name, email, password })); */
   const handleSubmit = (data, formActions) => {
     onRegisterUser(data);
     formActions.resetForm();
@@ -82,3 +66,4 @@ export const RegisterForm = ({ onRegisterUser }) => {
     </Formik>
   );
 };
+export default RegisterForm;

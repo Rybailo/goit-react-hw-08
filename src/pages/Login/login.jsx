@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { LoginForm } from "../../components/LoginForm/LoginForm";
+import LoginForm from "../../components/LoginForm/LoginForm";
 import { apiLoginUser } from "../../redux/auth/operations";
 
 const login = () => {
@@ -11,6 +11,7 @@ const login = () => {
   };
   return (
     <div>
+      Login
       <LoginForm onLoginUser={onLoginUser} />
     </div>
   );

@@ -10,8 +10,8 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 
 import { toast } from "react-hot-toast";
-import { addContact } from "../../redux/contacts/operations";
-import { getContacts } from "../../redux/contacts/selectors";
+import { apiAddContact } from "../../redux/contacts/operations";
+import { selectGetContacts } from "../../redux/contacts/selectors";
 
 const ContactSchema = Yup.object().shape({
   name: Yup.string()
@@ -34,13 +34,13 @@ const ContactSchema = Yup.object().shape({
     .required("Required"),
 });
 
-export const ContactForm = () => {
-  const contacts = useSelector(getContacts);
+const ContactForm = ({ onAddContact }) => {
+  const contacts = useSelector(selectGetContacts);
   const dispatch = useDispatch();
 
-  const handleSubmit = (values, actions) => {
+  const handleSubmit = (formData, actions) => {
     actions.resetForm();
-    const { name, number } = values;
+    const { name, number } = formData;
     const isExist = contacts.some(
       (contact) =>
         contact.name.toLowerCase() === name.toLowerCase() ||
@@ -53,7 +53,7 @@ export const ContactForm = () => {
       return;
     }
 
-    dispatch(addContact({ name, number }));
+    dispatch(apiAddContact({ name, number }));
   };
   return (
     <Formik
@@ -66,7 +66,6 @@ export const ContactForm = () => {
     >
       <StyledForm>
         <Label>
-          {" "}
           Name:
           <StyledField name="name" type="text" />
           <ErrorMsg name="name" component="div" />
@@ -76,8 +75,11 @@ export const ContactForm = () => {
           <StyledField name="number" type="tel" />
           <ErrorMsg name="number" component="div" />
         </Label>
-        <Button type="submit">Add contact</Button>
+        <Button onAddContact={onAddContact} type="submit">
+          Add contact
+        </Button>
       </StyledForm>
     </Formik>
   );
 };
+export default ContactForm;

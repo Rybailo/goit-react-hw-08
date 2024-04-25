@@ -1,3 +1,3 @@
-export const getContacts = (state) => state.contacts.contacts;
-export const getError = (state) => state.error;
+export const selectGetContacts = (state) => state.contacts.contacts;
+export const selectGetError = (state) => state.isError;
 export const selectIsLoading = (state) => state.contacts.isLoading;

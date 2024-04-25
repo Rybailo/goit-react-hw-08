@@ -1,12 +1,10 @@
-import { Toaster } from "react-hot-toast";
-import { ContactForm } from "./components/ContactForm/ContactForm";
-import { ContactList } from "./components/ContactList/ContactList";
-import { Filter } from "./components/Filter/Filter";
-import { Layout } from "./components/Layout";
+import Layout from "./components/Layout";
 import { useDispatch } from "react-redux";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { lazy, useEffect } from "react";
 import { apiRefreshUser } from "./redux/auth/operations";
+import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 const Home = lazy(() => import("./pages/Home/home"));
 const Contacts = lazy(() => import("./pages/Contacts/contacts"));
@@ -23,17 +21,40 @@ function App() {
   return (
     <Layout>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Registration />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/contacts" element={<Contacts />} />
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <Home />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute>
+              <Registration />
+            </RestrictedRoute>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute>
+              <Login />
+            </RestrictedRoute>
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute>
+              <Contacts />
+            </PrivateRoute>
+          }
+        />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <h2>Contacts</h2>
-      <Filter />
-      <ContactList />
-      <Toaster />
     </Layout>
   );
 }
