@@ -11,7 +11,6 @@ const login = () => {
   };
   return (
     <div>
-      Login
       <LoginForm onLoginUser={onLoginUser} />
     </div>
   );

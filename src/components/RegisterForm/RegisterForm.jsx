@@ -1,16 +1,6 @@
-import { Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
-import {
-  Button,
-  ErrorMsg,
-  Label,
-  StyledField,
-  StyledForm,
-} from "../ContactForm/ContactForm.styled";
-import { useDispatch, useSelector } from "react-redux";
-
-import { toast } from "react-hot-toast";
-import { selectGetContacts } from "../../redux/contacts/selectors";
+import css from "./RegisterForm.module.css";
 
 const UserRegisterSchema = Yup.object().shape({
   name: Yup.string()
@@ -26,8 +16,6 @@ const UserRegisterSchema = Yup.object().shape({
 });
 
 const RegisterForm = ({ onRegisterUser }) => {
-  const contacts = useSelector(selectGetContacts);
-  const dispatch = useDispatch();
   const handleSubmit = (data, formActions) => {
     onRegisterUser(data);
     formActions.resetForm();
@@ -42,27 +30,35 @@ const RegisterForm = ({ onRegisterUser }) => {
       onSubmit={handleSubmit}
       validationSchema={UserRegisterSchema}
     >
-      <StyledForm>
+      <Form className={css.registerFrom}>
         <h2>Register</h2>
-        <Label>
-          {" "}
+        <label className={css.registerFromLabel}>
           User name:
-          <StyledField name="name" type="text" />
-          <ErrorMsg name="name" component="div" />
-        </Label>
-        <Label>
-          {" "}
+          <Field className={css.registerFormInput} name="name" type="text" />
+          <ErrorMessage className={css.ErrorMsg} name="name" component="div" />
+        </label>
+        <label className={css.registerFromLabel}>
           Email:
-          <StyledField name="email" type="text" />
-          <ErrorMsg name="email" component="div" />
-        </Label>
-        <Label>
+          <Field className={css.registerFormInput} name="email" type="text" />
+          <ErrorMessage className={css.ErrorMsg} name="email" component="div" />
+        </label>
+        <label className={css.registerFromLabel}>
           Password:
-          <StyledField name="password" type="password" />
-          <ErrorMsg name="password" component="div" />
-        </Label>
-        <Button type="submit">Sign up</Button>
-      </StyledForm>
+          <Field
+            className={css.registerFormInput}
+            name="password"
+            type="password"
+          />
+          <ErrorMessage
+            className={css.ErrorMsg}
+            name="password"
+            component="div"
+          />
+        </label>
+        <button className={css.btn} type="submit">
+          Sign up
+        </button>
+      </Form>
     </Formik>
   );
 };

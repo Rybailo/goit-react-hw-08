@@ -1,0 +1,41 @@
+.btn {
+  box-shadow: 0px 2px 1px 0px rgba(46, 47, 66, 0.08),
+    0px 1px 1px 0px rgba(46, 47, 66, 0.16),
+    0px 1px 6px 0px rgba(46, 47, 66, 0.08);
+  border-radius: 5px;
+  border: none;
+  border: 1px solid #dcd8d8;
+  cursor: pointer;
+  width: 150px;
+}
+.btn:hover {
+  background-color: orange;
+}
+
+.loginFrom {
+  border-radius: 4px;
+  border: 1px solid black;
+  padding: 13px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.loginFromLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.loginFormInput {
+  padding: 4px;
+}
+.loginFormInput:focus-visible {
+  outline: 1px solid blue;
+}
+
+.ErrorMsg {
+  font-size: 14px;
+  color: red;
+}

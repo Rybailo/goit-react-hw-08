@@ -1,17 +1,11 @@
-import { Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
-import {
-  Button,
-  ErrorMsg,
-  Label,
-  StyledField,
-  StyledForm,
-} from "./ContactForm.styled";
 import { useDispatch, useSelector } from "react-redux";
 
 import { toast } from "react-hot-toast";
 import { apiAddContact } from "../../redux/contacts/operations";
 import { selectGetContacts } from "../../redux/contacts/selectors";
+import css from "./ContactForm.module.css";
 
 const ContactSchema = Yup.object().shape({
   name: Yup.string()
@@ -34,7 +28,7 @@ const ContactSchema = Yup.object().shape({
     .required("Required"),
 });
 
-const ContactForm = ({ onAddContact }) => {
+const ContactForm = () => {
   const contacts = useSelector(selectGetContacts);
   const dispatch = useDispatch();
 
@@ -64,21 +58,25 @@ const ContactForm = ({ onAddContact }) => {
       onSubmit={handleSubmit}
       validationSchema={ContactSchema}
     >
-      <StyledForm>
-        <Label>
+      <Form className={css.contForm}>
+        <label className={css.contFormLabel}>
           Name:
-          <StyledField name="name" type="text" />
-          <ErrorMsg name="name" component="div" />
-        </Label>
-        <Label>
+          <Field className={css.contFormInput} name="name" type="text" />
+          <ErrorMessage className={css.ErrorMsg} name="name" component="div" />
+        </label>
+        <label className={css.contFormLabel}>
           Number:
-          <StyledField name="number" type="tel" />
-          <ErrorMsg name="number" component="div" />
-        </Label>
-        <Button onAddContact={onAddContact} type="submit">
+          <Field className={css.contFormInput} name="number" type="tel" />
+          <ErrorMessage
+            className={css.ErrorMsg}
+            name="number"
+            component="div"
+          />
+        </label>
+        <button className={css.btn} type="submit">
           Add contact
-        </Button>
-      </StyledForm>
+        </button>
+      </Form>
     </Formik>
   );
 };

@@ -1,0 +1,12 @@
+.Nav {
+  cursor: pointer;
+  font-size: large;
+  margin: 15px;
+}
+.Nav:hover {
+  color: orange;
+}
+
+.active {
+  color: #646cff;
+}

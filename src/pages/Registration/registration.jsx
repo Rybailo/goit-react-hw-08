@@ -11,7 +11,6 @@ const registration = () => {
   };
   return (
     <div>
-      Register
       <RegisterForm onRegisterUser={onRegisterUser} />
     </div>
   );

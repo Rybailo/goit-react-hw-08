@@ -21,14 +21,7 @@ function App() {
   return (
     <Layout>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <PrivateRoute>
-              <Home />
-            </PrivateRoute>
-          }
-        />
+        <Route path="/" element={<Home />} />
         <Route
           path="/register"
           element={

@@ -1,0 +1,7 @@
+.filterInput {
+  display: block;
+  margin-top: 8px;
+}
+.filterInput:focus-visible {
+  outline: 1px solid blue;
+}

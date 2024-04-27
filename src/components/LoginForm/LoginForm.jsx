@@ -1,16 +1,6 @@
-import { Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
-import {
-  Button,
-  ErrorMsg,
-  Label,
-  StyledField,
-  StyledForm,
-} from "../ContactForm/ContactForm.styled";
-/* import { useDispatch, useSelector } from "react-redux";
-
-import { toast } from "react-hot-toast";
-import { selectGetContacts } from "../../redux/contacts/selectors"; */
+import css from "./LoginForm.module.css";
 
 const UserRegisterSchema = Yup.object().shape({
   email: Yup.string()
@@ -22,8 +12,6 @@ const UserRegisterSchema = Yup.object().shape({
 });
 
 const LoginForm = ({ onLoginUser }) => {
-  /*   const contacts = useSelector(selectGetContacts);
-  const dispatch = useDispatch(); */
   const handleSubmit = (data, formActions) => {
     onLoginUser(data);
     formActions.resetForm();
@@ -37,21 +25,30 @@ const LoginForm = ({ onLoginUser }) => {
       onSubmit={handleSubmit}
       validationSchema={UserRegisterSchema}
     >
-      <StyledForm>
+      <Form className={css.loginFrom}>
         <h2>Login</h2>
-        <Label>
-          {" "}
+        <label className={css.loginFromLabel}>
           Email:
-          <StyledField name="email" type="text" />
-          <ErrorMsg name="email" component="div" />
-        </Label>
-        <Label>
+          <Field className={css.loginFromField} name="email" type="text" />
+          <ErrorMessage className={css.ErrorMsg} name="email" component="div" />
+        </label>
+        <label className={css.loginFromLabel}>
           Password:
-          <StyledField name="password" type="password" />
-          <ErrorMsg name="password" component="div" />
-        </Label>
-        <Button type="submit">Sign in</Button>
-      </StyledForm>
+          <Field
+            className={css.loginFromField}
+            name="password"
+            type="password"
+          />
+          <ErrorMessage
+            className={css.ErrorMsg}
+            name="password"
+            component="div"
+          />
+        </label>
+        <button className={css.btn} type="submit">
+          Sign in
+        </button>
+      </Form>
     </Formik>
   );
 };

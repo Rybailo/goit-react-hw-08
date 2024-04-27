@@ -12,7 +12,7 @@
   background-color: orange;
 }
 
-.registerFrom {
+.contForm {
   border-radius: 4px;
   border: 1px solid black;
   padding: 8px;
@@ -21,16 +21,16 @@
   gap: 8px;
 }
 
-.registerFromLabel {
+.contFormLabel {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-.registerFormInput {
+.contFormInput {
   padding: 4px;
 }
-.registerFormInput:focus-visible {
+.contFormInput:focus-visible {
   outline: 1px solid blue;
 }
 
